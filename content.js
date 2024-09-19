@@ -4,6 +4,9 @@ function removeSpecificWafflesPortal() {
   if (wafflesDiv) {
     wafflesDiv.closest('#waffles-portal-root').remove();
     console.log("Div 'waffles-portal-root' com filho 'data-testid=modal-overlay' removida.");
+
+    observer.disconnect();
+    console.log("MutationObserver desconectado após remover a div.");
   } else {
     console.log("A div 'waffles-portal-root' com o filho 'modal-overlay' não foi encontrada.");
   }
