@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "DataCamp Free No Ads",
-    "version": "1.0",
+    "version": "1.1",
     "description": "Remove uma tag específica do HTML ao acessar páginas específicas no DataCamp.",
     "permissions": [
       "activeTab",
