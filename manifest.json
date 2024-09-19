@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "DataCamp Free No Ads",
+    "version": "1.0",
+    "description": "Remove uma tag específica do HTML ao acessar páginas específicas no DataCamp.",
+    "permissions": [
+      "activeTab",
+      "scripting"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://campus.datacamp.com/courses/*"],
+        "js": ["content.js"]
+      }
+    ],
+    "host_permissions": [
+      "*://campus.datacamp.com/courses/*"
+    ]
+}
