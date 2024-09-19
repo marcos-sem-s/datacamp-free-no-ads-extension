@@ -1,12 +1,19 @@
-function removeTag() {
-    const tag = document.querySelector("waffles-portal-root");
+function removeWafflesPortal() {
+    const wafflesDiv = document.getElementById("waffles-portal-root");
   
-    if (tag) {
-      tag.remove();
-      console.log("Tag removida.");
-    } else {
-      console.log("Tag não encontrada.");
+    if (wafflesDiv) {
+      wafflesDiv.remove();
+      console.log("Div 'waffles-portal-root' removida.");
     }
 }
-
-window.addEventListener('load', removeTag);
+  
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach(() => {
+      removeWafflesPortal();
+    });
+});
+  
+observer.observe(document.body, { childList: true, subtree: true });
+  
+removeWafflesPortal();
+  
