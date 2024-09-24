@@ -1,23 +1,26 @@
-function removeSpecificWafflesPortal() {
-  const wafflesDiv = document.querySelector('#waffles-portal-root div[data-testid="modal-overlay"]');
-  
-  if (wafflesDiv) {
-    wafflesDiv.closest('#waffles-portal-root').remove();
-    console.log("Div 'waffles-portal-root' com filho 'data-testid=modal-overlay' removida.");
+function removeWafflesPortalIfIframeExists(observer) {
+  const targetIframe = document.querySelector('iframe.iframe-modal[src*="https://upsell-dialogs.datacamp.com/templates/paywall_sitewide"]');
 
-    observer.disconnect();
-    console.log("MutationObserver desconectado após remover a div.");
+  if (targetIframe) {
+      console.log("Iframe encontrado. Tentando remover a div waffles-portal-root.");
+
+      const wafflesDiv = document.querySelector('#waffles-portal-root');
+
+      if (wafflesDiv) {
+          wafflesDiv.closest('#waffles-portal-root').remove();
+          console.log("Div 'waffles-portal-root' removida.");
+      }
   } else {
-    console.log("A div 'waffles-portal-root' com o filho 'modal-overlay' não foi encontrada.");
+    console.log("Iframe não encontrado. A div waffles-portal-root não foi removida.");
   }
 }
 
 const observer = new MutationObserver((mutations) => {
   mutations.forEach(() => {
-    removeSpecificWafflesPortal();
+      removeWafflesPortalIfIframeExists(observer);
   });
 });
 
 observer.observe(document.body, { childList: true, subtree: true });
 
-removeSpecificWafflesPortal();
+removeWafflesPortalIfIframeExists(observer);
