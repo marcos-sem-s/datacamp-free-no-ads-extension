@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
     "name": "DataCamp Free No Ads",
-    "version": "1.3",
-    "description": "Remove uma tag específica do HTML ao acessar páginas específicas no DataCamp.",
+    "version": "1.4",
+    "description": "Remove specific HTML paywall tags when acessing blocked pages at DataCamp.",
     "permissions": [
       "activeTab",
       "scripting"
